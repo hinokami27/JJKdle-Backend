@@ -87,10 +87,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version> <!-- or the latest version available -->
+                <version>3.10.1</version> <!-- Use a version that supports Java 19 -->
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>19</source>
+                    <target>19</target>
                 </configuration>
             </plugin>
         </plugins>
