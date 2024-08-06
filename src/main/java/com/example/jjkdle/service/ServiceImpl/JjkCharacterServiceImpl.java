@@ -100,7 +100,7 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
     @Override
     public void resetImgLinks() {
         for (JjkCharacter jjk : jjkCharacterRepository.findAll()){
-            jjk.setImgUrl("src/images/photos/"+jjk.getName()+".jpg");
+            jjk.setImgUrl("/images/photos/"+jjk.getName()+".jpg");
             jjkCharacterRepository.save(jjk);
         }
     }
