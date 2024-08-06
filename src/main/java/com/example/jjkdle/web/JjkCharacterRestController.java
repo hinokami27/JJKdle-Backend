@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://jj-kdle-frontend.vercel.app,https://jj-kdle-frontend.vercel.app/")
 public class JjkCharacterRestController {
 
     private final JjkCharacterService jjkCharacterService;
