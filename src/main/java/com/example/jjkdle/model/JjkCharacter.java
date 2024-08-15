@@ -1,14 +1,12 @@
 package com.example.jjkdle.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Entity
 @NoArgsConstructor
 @Getter

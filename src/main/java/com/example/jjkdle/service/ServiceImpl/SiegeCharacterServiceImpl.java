@@ -1,13 +1,12 @@
 package com.example.jjkdle.service.ServiceImpl;
 
-import com.example.jjkdle.model.JjkCharacter;
+
 import com.example.jjkdle.model.SiegeCharacter;
 import com.example.jjkdle.repository.SiegeCharacterRepository;
 import com.example.jjkdle.service.SiegeCharacterService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -1,16 +1,14 @@
 package com.example.jjkdle.service.ServiceImpl;
 
 import com.example.jjkdle.model.CompareResponse;
-import com.example.jjkdle.model.DailyCounter;
 import com.example.jjkdle.model.JjkCharacter;
-import com.example.jjkdle.repository.DailyCounterRepository;
 import com.example.jjkdle.repository.JjkCharacterRepository;
 import com.example.jjkdle.service.JjkCharacterDateService;
 import com.example.jjkdle.service.JjkCharacterService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+
 import java.util.stream.Collectors;
 
 @Service
@@ -18,12 +16,9 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
 
     private final JjkCharacterRepository jjkCharacterRepository;
     private final JjkCharacterDateService characterDateService;
-    private final DailyCounterRepository dailyCounterRepository;
-
-    public JjkCharacterServiceImpl(JjkCharacterRepository jjkCharacterRepository, JjkCharacterDateService characterDateService, DailyCounterRepository dailyCounterRepository) {
+    public JjkCharacterServiceImpl(JjkCharacterRepository jjkCharacterRepository, JjkCharacterDateService characterDateService) {
         this.jjkCharacterRepository = jjkCharacterRepository;
         this.characterDateService = characterDateService;
-        this.dailyCounterRepository = dailyCounterRepository;
     }
 
     @Override
@@ -71,11 +66,6 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
     public boolean compared(JjkCharacter first, JjkCharacter second) {
         if(first.getName().equals(second.getName())){
             //return false when checking for doubles
-            DailyCounter dc = dailyCounterRepository.findAll().stream().findFirst().get();
-            AtomicInteger ai = dc.getDailyCounter();
-            ai.incrementAndGet();
-            dc.setDailyCounter(ai);
-            dailyCounterRepository.save(dc);
             return true;
         }
         List<String> affiliations1 = first.getAffiliations();

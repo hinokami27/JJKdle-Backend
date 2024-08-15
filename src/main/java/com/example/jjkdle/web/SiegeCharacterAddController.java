@@ -1,6 +1,6 @@
 package com.example.jjkdle.web;
 
-import com.example.jjkdle.model.JjkCharacter;
+
 import com.example.jjkdle.model.SiegeCharacter;
 import com.example.jjkdle.service.SiegeCharacterService;
 import org.springframework.stereotype.Controller;

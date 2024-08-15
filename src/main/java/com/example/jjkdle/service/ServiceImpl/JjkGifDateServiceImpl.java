@@ -1,7 +1,5 @@
 package com.example.jjkdle.service.ServiceImpl;
 
-import com.example.jjkdle.model.JjkCharacter;
-import com.example.jjkdle.model.JjkCharacterDate;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.model.JjkGifDate;
 import com.example.jjkdle.repository.JjkGifDateRepository;
