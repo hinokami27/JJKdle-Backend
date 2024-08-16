@@ -1,5 +1,6 @@
 package com.example.jjkdle.service;
 
+import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.SiegeCharacter;
 
 import java.util.List;
@@ -13,7 +14,10 @@ public interface SiegeCharacterService {
 
     Optional<SiegeCharacter> findById(Long id);
 
-    public void resetImgLinks();
+    void resetImgLinks();
+
+    boolean compared(SiegeCharacter first, SiegeCharacter second);
+    CompareResponse compareWinner(String input);
 
     void editCharacter(Long id, String imgUrl, String name, String gender, String side, String specialty, String organisation, String squad, String sights, String releaseYear);
 }

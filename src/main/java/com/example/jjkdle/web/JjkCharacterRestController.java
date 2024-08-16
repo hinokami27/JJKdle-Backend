@@ -2,6 +2,7 @@ package com.example.jjkdle.web;
 
 import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.JjkCharacter;
+import com.example.jjkdle.model.JjkCharacterDate;
 import com.example.jjkdle.service.JjkCharacterDateService;
 import com.example.jjkdle.service.JjkCharacterService;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,10 @@ public class JjkCharacterRestController {
     @GetMapping("/all")
     public List<JjkCharacter> getAll(){
         return jjkCharacterService.findAll();
+    }
+    @GetMapping("/dates")
+    public List<JjkCharacterDate> getDates(){
+        return jjkCharacterDateService.findAll();
     }
     @GetMapping("/shuffle")
     public void shuffle() {

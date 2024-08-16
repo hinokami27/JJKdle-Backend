@@ -13,8 +13,6 @@ public interface JjkCharacterService {
     List<JjkCharacter> findAll();
     Optional<JjkCharacter> findById(Long id);
 
-    List<List<JjkCharacter>> findCopies();
-
     boolean compared(JjkCharacter first, JjkCharacter second);
 
     void resetImgLinks();

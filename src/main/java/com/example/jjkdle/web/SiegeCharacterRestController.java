@@ -1,12 +1,11 @@
 package com.example.jjkdle.web;
 
+import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.SiegeCharacter;
+import com.example.jjkdle.model.SiegeCharacterDate;
 import com.example.jjkdle.service.SiegeCharacterDateService;
 import com.example.jjkdle.service.SiegeCharacterService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +25,10 @@ public class SiegeCharacterRestController {
     public List<SiegeCharacter> getAll(){
         return siegeCharacterService.findAll();
     }
+    @GetMapping("/dates")
+    public List<SiegeCharacterDate> getDates(){
+        return siegeCharacterDateService.findAll();
+    }
     @GetMapping("/shuffle")
     public void shuffle() {
         siegeCharacterDateService.shuffleAndSetDates();
@@ -38,4 +41,9 @@ public class SiegeCharacterRestController {
     public SiegeCharacter getTodaysCharacter() {
         return siegeCharacterDateService.getTodayCharacter();
     }
+    @GetMapping("/compareWinner")
+    public CompareResponse compareWinner(@RequestParam String name){
+        return siegeCharacterService.compareWinner(name);
+    }
+
 }

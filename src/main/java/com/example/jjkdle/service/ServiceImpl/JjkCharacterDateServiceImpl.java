@@ -41,4 +41,9 @@ public class JjkCharacterDateServiceImpl implements JjkCharacterDateService {
     public JjkCharacter getTodayCharacter() {
         return jjkCharacterDateRepository.findJjkCharacterDateByDate(LocalDate.now()).getJjkCharacter();
     }
+
+    @Override
+    public List<JjkCharacterDate> findAll() {
+        return jjkCharacterDateRepository.findAll();
+    }
 }

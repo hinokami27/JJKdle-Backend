@@ -115,13 +115,13 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
         }
 
         CompareResponse response = new CompareResponse();
-        response.setGenderSquare(genderCompare(today.getGender(),guess.getGender()));
-        response.setAffiliationsSquare(listCompare(today.getAffiliations(),guess.getAffiliations()));
-        response.setJujutsuSquare(listCompare(today.getJujutsu(),guess.getJujutsu()));
-        response.setDomainSquare(listCompare(today.getDomain(),guess.getDomain()));
-        response.setEnergySquare(listCompare(today.getEnergy(),guess.getEnergy()));
-        response.setGradeSquare(beforeOrAfter(today.getGrade(), guess.getGrade()));
-        response.setArcSquare(beforeOrAfter(today.getFirstArc(), guess.getFirstArc()));
+        response.setFirstSquare(genderCompare(today.getGender(),guess.getGender()));
+        response.setSecondSquare(listCompare(today.getAffiliations(),guess.getAffiliations()));
+        response.setThirdSquare(listCompare(today.getJujutsu(),guess.getJujutsu()));
+        response.setFourthSquare(listCompare(today.getDomain(),guess.getDomain()));
+        response.setFifthSquare(listCompare(today.getEnergy(),guess.getEnergy()));
+        response.setSixthSquare(beforeOrAfter(today.getGrade(), guess.getGrade()));
+        response.setSeventhSquare(beforeOrAfter(today.getFirstArc(), guess.getFirstArc()));
         response.setGuessed(false);
 
         return response;
@@ -170,22 +170,5 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
         } else {
             return "yellowSquare";
         }
-    }
-
-    @Override
-    public List<List<JjkCharacter>> findCopies() {
-        List<JjkCharacter> jjkCharacters = jjkCharacterRepository.findAll();
-        List<List<JjkCharacter>> doubles = new ArrayList<>();
-        for(JjkCharacter first : jjkCharacters){
-            for (JjkCharacter second : jjkCharacters){
-                if(compared(first,second)){
-                    List<JjkCharacter> pair = new ArrayList<>();
-                    pair.add(first);
-                    pair.add(second);
-                    doubles.add(pair);
-                }
-            }
-        }
-        return doubles;
     }
 }

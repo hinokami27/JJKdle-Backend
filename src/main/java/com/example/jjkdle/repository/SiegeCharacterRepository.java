@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SiegeCharacterRepository extends JpaRepository<SiegeCharacter,Long> {
+    SiegeCharacter findByName (String name);
 }
