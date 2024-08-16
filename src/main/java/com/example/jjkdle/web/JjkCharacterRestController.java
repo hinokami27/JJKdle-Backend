@@ -45,5 +45,9 @@ public class JjkCharacterRestController {
     public CompareResponse compareWinner(@RequestParam String name){
         return jjkCharacterService.compareWinner(name);
     }
+    @GetMapping("/time")
+    public String getZonedTime(){
+        return jjkCharacterDateService.getCurrentTimeWithZone();
+    }
 
 }

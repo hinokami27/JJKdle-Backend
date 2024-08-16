@@ -10,4 +10,5 @@ public interface JjkCharacterDateService {
     void shuffleAndSetDates();
     JjkCharacter getTodayCharacter();
     List<JjkCharacterDate> findAll();
+    String getCurrentTimeWithZone();
 }

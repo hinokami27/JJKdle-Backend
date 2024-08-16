@@ -8,6 +8,8 @@ import com.example.jjkdle.service.JjkCharacterDateService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,5 +47,16 @@ public class JjkCharacterDateServiceImpl implements JjkCharacterDateService {
     @Override
     public List<JjkCharacterDate> findAll() {
         return jjkCharacterDateRepository.findAll();
+    }
+    @Override
+    public String getCurrentTimeWithZone() {
+        // Get the current time and the system's default time zone
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+
+        // Format the output to include the date, time, and time zone
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+
+        // Return the formatted string
+        return zonedDateTime.format(formatter);
     }
 }
