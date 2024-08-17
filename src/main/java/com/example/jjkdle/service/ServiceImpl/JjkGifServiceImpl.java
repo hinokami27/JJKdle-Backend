@@ -6,6 +6,7 @@ import com.example.jjkdle.service.JjkGifDateService;
 import com.example.jjkdle.service.JjkGifService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,5 +83,15 @@ public class JjkGifServiceImpl implements JjkGifService {
         }
 
         return response;
+    }
+
+    @Override
+    public List<String> findAllAbilities() {
+        List<JjkGif> gifs = gifRepository.findAll();
+        List<String> abilities = new ArrayList<>();
+        for(JjkGif gif : gifs){
+            abilities.add(gif.getAbility());
+        }
+        return abilities;
     }
 }

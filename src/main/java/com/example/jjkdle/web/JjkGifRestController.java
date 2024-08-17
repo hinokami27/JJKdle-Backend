@@ -1,9 +1,12 @@
 package com.example.jjkdle.web;
 
 import com.example.jjkdle.model.JjkGif;
+import com.example.jjkdle.model.JjkGifDate;
 import com.example.jjkdle.service.JjkGifDateService;
 import com.example.jjkdle.service.JjkGifService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/gif")
@@ -16,6 +19,14 @@ public class JjkGifRestController {
     public JjkGifRestController(JjkGifService gifService, JjkGifDateService gifDateService) {
         this.gifService = gifService;
         this.gifDateService = gifDateService;
+    }
+    @GetMapping("/all")
+    public List<JjkGif> getAllGifs(){
+        return gifService.findAll();
+    }
+    @GetMapping("/dates")
+    public List<JjkGifDate> getAllGifDates(){
+        return gifDateService.findAll();
     }
 
     @GetMapping("/resetLinks")
@@ -37,5 +48,9 @@ public class JjkGifRestController {
     public String compareGifs(@RequestParam String guessedCharacter,
                               @RequestParam String guessedAbility){
         return gifService.compareGifs(guessedCharacter, guessedAbility);
+    }
+    @GetMapping("/abilities")
+    public List<String> getAllAbilities(){
+        return gifService.findAllAbilities();
     }
 }

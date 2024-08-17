@@ -41,4 +41,9 @@ public class JjkGifDateServiceImpl implements JjkGifDateService {
     public JjkGif getTodayGif() {
         return gifDateRepository.findJjkGifDateByDate(LocalDate.now()).getGif();
     }
+
+    @Override
+    public List<JjkGifDate> findAll() {
+        return gifDateRepository.findAll();
+    }
 }

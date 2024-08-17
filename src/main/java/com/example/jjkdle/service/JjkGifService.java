@@ -12,4 +12,5 @@ public interface JjkGifService {
     void edit(Long id ,String gifUrl, String characterName, String ability);
     void setLinks();
     String compareGifs(String guessedCharacter, String guessedAbility);
+    List<String> findAllAbilities();
 }
