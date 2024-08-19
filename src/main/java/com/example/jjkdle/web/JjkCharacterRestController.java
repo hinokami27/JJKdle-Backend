@@ -49,5 +49,15 @@ public class JjkCharacterRestController {
     public String getZonedTime(){
         return jjkCharacterDateService.getCurrentTimeWithZone();
     }
+    @PostMapping("/addChars")
+    public void addChars(@RequestBody List<JjkCharacter> jjkCharacters) {
+        for(JjkCharacter jjk : jjkCharacters){
+            String aff = String.join(",",jjk.getAffiliations());
+            String jjt = String.join(",",jjk.getJujutsu());
+            String dom = String.join(",",jjk.getDomain());
+            String nrg = String.join(",",jjk.getEnergy());
+            jjkCharacterService.saveCharacter(jjk.getName(),jjk.getImgUrl(),jjk.getGender(),aff,jjt,dom,nrg,jjk.getGrade(),jjk.getFirstArc());
+        }
+    }
 
 }

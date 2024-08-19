@@ -21,7 +21,7 @@ public class JjkGifController {
         return "error";
     }
 
-    @GetMapping("/allGifs")
+    @GetMapping("/showAll")
     public String getAllGifs(Model model){
         model.addAttribute("gifs", gifService.findAll());
         return "allGifs";

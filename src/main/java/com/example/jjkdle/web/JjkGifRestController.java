@@ -53,4 +53,10 @@ public class JjkGifRestController {
     public List<String> getAllAbilities(){
         return gifService.findAllAbilities();
     }
+    @PostMapping("/addChars")
+    public void addChars(@RequestBody List<JjkGif> gifs) {
+        for(JjkGif gif : gifs){
+            gifService.save(gif.getGifUrl(),gif.getCharacterName(),gif.getAbility());
+        }
+    }
 }

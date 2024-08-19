@@ -45,5 +45,13 @@ public class SiegeCharacterRestController {
     public CompareResponse compareWinner(@RequestParam String name){
         return siegeCharacterService.compareWinner(name);
     }
+    @PostMapping("/addChars")
+    public void addChars(@RequestBody List<SiegeCharacter> siegeCharacters) {
+        for(SiegeCharacter op : siegeCharacters){
+            String specs = String.join(",",op.getSpecialty());
+            String sights = String.join(",",op.getSights());
+            siegeCharacterService.saveCharacter(op.getImgUrl(),op.getName(),op.getGender(),op.getSide(),specs,op.getOrganisation(),op.getSquad(),sights,op.getReleaseYear());
+        }
+    }
 
 }
