@@ -12,15 +12,16 @@
     }
     ul{
       list-style-type: none;
-      padding: 0px;
+      padding: 0;
     }
   </style>
 </head>
 <body>
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
   <thead>
   <tr>
     <th scope="col">Image</th>
+    <th scope="col">ImageURL</th>
     <th scope="col">Character</th>
     <th scope="col">Gender</th>
     <th scope="col">Side</th>
@@ -34,23 +35,27 @@
   </thead>
   <tbody>
   <tr th:each="operator : ${operators}">
-    <td th:text="${operator.getImgUrl()}"></td>
-    <td th:text="${operator.getName()}"></td>
-    <td th:text="${operator.getGender()}"></td>
-    <td th:text="${operator.getSide()}"></td>
+    <td>
+      <img src="https://tiermaker.com/images/media/template_images/2024/17385606/all-current-r6-operators-17385606-2/glaz.png" th:src="@{${'https://tiermaker.com/images/media/template_images/2024/17385606/all-current-r6-operators-17385606-2/'+operator.getName().replace('Ã','A').replace('Ä','A').replace('Ø','O').toLowerCase() +'.png'}}">
+    </td>
+    <td th:text="${operator.getImgUrl()}">/images/operators/GLAZ.png</td>
+    <td th:text="${operator.getName()}">GLAZ</td>
+    <td th:text="${operator.getGender()}">MALE</td>
+    <td th:text="${operator.getSide()}">ATTACKER</td>
     <td>
       <ul th:each="spec : ${operator.getSpecialty()}">
-        <li th:text="${spec}"></li>
+        <li th:text="${spec}">SUPPORT</li>
       </ul>
     </td>
-    <td th:text="${operator.getOrganisation()}"></td>
-    <td th:text="${operator.getSquad()}"></td>
+    <td th:text="${operator.getOrganisation()}">SPETSNAZ</td>
+    <td th:text="${operator.getSquad()}">REDHAMMER</td>
     <td>
       <ul th:each="sight : ${operator.getSights()}">
-        <li th:text="${sight}"></li>
+        <li th:text="${sight}">
+          Iron Sights</li>
       </ul>
     </td>
-    <td th:text="${operator.getReleaseYear()}"></td>
+    <td th:text="${operator.getReleaseYear()}">2015</td>
     <td>
       <a th:href="@{'/siege/edit-form/{id}' (id=${operator.getId()})}" class="btn btn-info">Edit</a>
     </td>

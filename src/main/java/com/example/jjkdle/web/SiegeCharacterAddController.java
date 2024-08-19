@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequestMapping("/siege")
 public class SiegeCharacterAddController {
@@ -24,7 +27,9 @@ public class SiegeCharacterAddController {
 
     @GetMapping("/showAll")
     public String showAll(Model model){
-        model.addAttribute("operators",siegeCharacterService.findAll());
+        List<SiegeCharacter> operators = siegeCharacterService.findAll();
+        operators.sort(Comparator.comparingInt(o -> Integer.parseInt(o.getReleaseYear())));
+        model.addAttribute("operators", operators);
         return "siegeShowAll";
     }
 
@@ -39,7 +44,7 @@ public class SiegeCharacterAddController {
                           @RequestParam String sights,
                           @RequestParam String releaseYear) {
         siegeCharacterService.saveCharacter(imgUrl, name, gender, side, specialty, organisation, squad, sights, releaseYear);
-        return "redirect:/siege/showAll";
+        return "redirect:/siege";
     }
     @GetMapping("/edit-form/{id}")
     public String getEditPage(@PathVariable Long id, Model model){

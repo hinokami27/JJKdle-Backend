@@ -43,7 +43,11 @@ public class SiegeCharacterServiceImpl implements SiegeCharacterService {
     @Override
     public void resetImgLinks() {
         for (SiegeCharacter op : siegeCharacterRepository.findAll()){
-            op.setImgUrl("/images/operators/"+op.getName()+".png");
+            String opName = op.getName();
+            opName = opName.replace("Ã","A");
+            opName = opName.replace("Ø","O");
+            opName = opName.replace("Ä","A");
+            op.setImgUrl("/images/operators/"+opName+".png");
             siegeCharacterRepository.save(op);
         }
     }
@@ -97,13 +101,13 @@ public class SiegeCharacterServiceImpl implements SiegeCharacterService {
     public void editCharacter(Long id, String imgUrl, String name, String gender, String side, String specialty, String organisation, String squad, String sights, String releaseYear) {
         SiegeCharacter operator = siegeCharacterRepository.findById(id).get();
         operator.setImgUrl(imgUrl);
-        operator.setName(name);
-        operator.setGender(gender);
-        operator.setSide(side);
+        operator.setName(name.toUpperCase());
+        operator.setGender(gender.toUpperCase());
+        operator.setSide(side.toUpperCase());
         List<String> spec = Arrays.stream(specialty.split(",")).map(String::trim).map(String::toUpperCase).sorted().collect(Collectors.toList());
         operator.setSpecialty(spec);
-        operator.setOrganisation(organisation);
-        operator.setSquad(squad);
+        operator.setOrganisation(organisation.toUpperCase());
+        operator.setSquad(squad.toUpperCase());
         List<String> sight = Arrays.stream(sights.split(",")).map(String::trim).collect(Collectors.toList());
         operator.setSights(sight);
         operator.setReleaseYear(releaseYear);
