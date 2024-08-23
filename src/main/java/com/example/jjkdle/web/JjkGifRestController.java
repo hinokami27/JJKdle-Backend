@@ -59,4 +59,9 @@ public class JjkGifRestController {
             gifService.save(gif.getGifUrl(),gif.getCharacterName(),gif.getAbility());
         }
     }
+    @GetMapping("/todayImg")
+    public String getTodayCharImg(){
+        return gifService.getTodayCharImg();
+    }
+
 }

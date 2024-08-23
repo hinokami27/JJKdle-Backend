@@ -2,6 +2,7 @@ package com.example.jjkdle.service.ServiceImpl;
 
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.repository.JjkGifRepository;
+import com.example.jjkdle.service.JjkCharacterService;
 import com.example.jjkdle.service.JjkGifDateService;
 import com.example.jjkdle.service.JjkGifService;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,12 @@ import java.util.Optional;
 public class JjkGifServiceImpl implements JjkGifService {
     private final JjkGifRepository gifRepository;
     private final JjkGifDateService gifDateService;
+    private final JjkCharacterService jjkCharacterService;
 
-    public JjkGifServiceImpl(JjkGifRepository gifRepository, JjkGifDateService gifDateService) {
+    public JjkGifServiceImpl(JjkGifRepository gifRepository, JjkGifDateService gifDateService, JjkCharacterService jjkCharacterService) {
         this.gifRepository = gifRepository;
         this.gifDateService = gifDateService;
+        this.jjkCharacterService = jjkCharacterService;
     }
 
     @Override
@@ -83,6 +86,12 @@ public class JjkGifServiceImpl implements JjkGifService {
         }
 
         return response;
+    }
+
+    @Override
+    public String getTodayCharImg() {
+        String todayGif = gifDateService.getTodayGif().getCharacterName();
+        return jjkCharacterService.findByName(todayGif).getImgUrl();
     }
 
     @Override

@@ -63,6 +63,11 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
     }
 
     @Override
+    public JjkCharacter findByName(String name) {
+        return jjkCharacterRepository.findByName(name);
+    }
+
+    @Override
     public boolean compared(JjkCharacter first, JjkCharacter second) {
         if(first.getName().equals(second.getName())){
             //return false when checking for doubles
