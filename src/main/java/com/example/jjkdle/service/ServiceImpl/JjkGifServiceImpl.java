@@ -1,5 +1,6 @@
 package com.example.jjkdle.service.ServiceImpl;
 
+import com.example.jjkdle.model.ColorResponse;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.repository.JjkGifRepository;
 import com.example.jjkdle.service.JjkCharacterService;
@@ -61,12 +62,13 @@ public class JjkGifServiceImpl implements JjkGifService {
     }
 
     @Override
-    public String compareGifs(String guessedCharacter, String guessedAbility) {
+    public ColorResponse compareGifs(String guessedCharacter, String guessedAbility) {
         JjkGif todaysGif = gifDateService.getTodayGif();
+
+        ColorResponse response = new ColorResponse();
 
         int square = 0;
 
-        String response;
 
         if(guessedCharacter.equals(todaysGif.getCharacterName())){
             square++;
@@ -76,13 +78,16 @@ public class JjkGifServiceImpl implements JjkGifService {
         }
 
         if(square==0){
-            response = "redSquare";
+            response.setColor("redSquare");
+            response.setGuessed(false);
         }
         else if(square==1){
-            response = "yellowSquare";
+            response.setColor("yellowSquare");
+            response.setGuessed(false);
         }
         else{
-            response = "greenSquare";
+            response.setColor("greenSquare");
+            response.setGuessed(true);
         }
 
         return response;

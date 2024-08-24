@@ -1,5 +1,6 @@
 package com.example.jjkdle.service;
 
+import com.example.jjkdle.model.ColorResponse;
 import com.example.jjkdle.model.JjkGif;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface JjkGifService {
     void save(String gifUrl, String characterName, String ability);
     void edit(Long id ,String gifUrl, String characterName, String ability);
     void setLinks();
-    String compareGifs(String guessedCharacter, String guessedAbility);
+    ColorResponse compareGifs(String guessedCharacter, String guessedAbility);
     String getTodayCharImg();
     List<String> findAllAbilities();
 }

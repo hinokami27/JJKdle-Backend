@@ -1,5 +1,6 @@
 package com.example.jjkdle.web;
 
+import com.example.jjkdle.model.ColorResponse;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.model.JjkGifDate;
 import com.example.jjkdle.service.JjkGifDateService;
@@ -45,8 +46,8 @@ public class JjkGifRestController {
     }
 
     @GetMapping("/compareWinner")
-    public String compareGifs(@RequestParam String guessedCharacter,
-                              @RequestParam String guessedAbility){
+    public ColorResponse compareGifs(@RequestParam String guessedCharacter,
+                                     @RequestParam String guessedAbility){
         return gifService.compareGifs(guessedCharacter, guessedAbility);
     }
     @GetMapping("/abilities")
