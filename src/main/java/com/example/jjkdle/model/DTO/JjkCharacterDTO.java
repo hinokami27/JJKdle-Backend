@@ -1,13 +1,11 @@
 package com.example.jjkdle.model.DTO;
 
 import com.example.jjkdle.config.EncryptionUtil;
-import com.example.jjkdle.model.JjkGif;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Setter
 @Getter
@@ -28,7 +26,6 @@ public class JjkCharacterDTO {
     private String grade;
     private String firstArc;
 
-    private static final String SECRET_KEY = "IlijaMizimakoski";
 
     public JjkCharacterDTO(){}
 
@@ -45,34 +42,10 @@ public class JjkCharacterDTO {
     }
 
     private String encryptData(String data){
-        try{
-            return EncryptionUtil.encrypt(data, SECRET_KEY);
-        }catch (Exception e){
-            return null;
-        }
+            return EncryptionUtil.encrypt(data);
     }
 
     private List<String> encryptDataList(List<String> dataList) {
-        try {
-            return EncryptionUtil.encryptList(dataList, SECRET_KEY);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public String decryptData(String encryptedData){
-        try {
-            return EncryptionUtil.decrypt(encryptedData, SECRET_KEY);
-        }catch (Exception e){
-            return null;
-        }
-    }
-
-    public List<String> decryptDataList(List<String> encryptedList) {
-        try {
-            return EncryptionUtil.decryptList(encryptedList, SECRET_KEY);
-        } catch (Exception e) {
-            return null;
-        }
+            return EncryptionUtil.encryptList(dataList);
     }
 }

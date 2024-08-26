@@ -8,7 +8,7 @@ import com.example.jjkdle.service.JjkGifDateService;
 import com.example.jjkdle.service.JjkGifService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/gif")
@@ -64,7 +64,8 @@ public class JjkGifRestController {
     }
     @GetMapping("/abilities")
     public List<String> getAllAbilities(){
-        return gifService.findAllAbilities();
+        Set<String> abilities = new HashSet<>(gifService.findAllAbilities());
+        return new ArrayList<>(abilities);
     }
     @PostMapping("/addChars")
     public void addChars(@RequestBody List<JjkGif> gifs) {

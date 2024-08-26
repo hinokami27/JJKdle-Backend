@@ -53,7 +53,7 @@ public class JjkGifServiceImpl implements JjkGifService {
 
     @Override
     public void edit(Long id, String gifUrl, String characterName, String ability) {
-        JjkGif gif = gifRepository.findById(id).orElseThrow(()-> new RuntimeException());
+        JjkGif gif = gifRepository.findById(id).orElseThrow(RuntimeException::new);
 
         gif.setGifUrl(gifUrl);
         gif.setCharacterName(characterName);

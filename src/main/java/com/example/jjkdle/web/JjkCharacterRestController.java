@@ -2,6 +2,7 @@ package com.example.jjkdle.web;
 
 import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.DTO.JjkCharacterDTO;
+import com.example.jjkdle.model.DTO.TodayCharacterDto;
 import com.example.jjkdle.model.JjkCharacter;
 import com.example.jjkdle.model.JjkCharacterDate;
 import com.example.jjkdle.service.JjkCharacterDateService;
@@ -50,7 +51,7 @@ public class JjkCharacterRestController {
     }
 
     @GetMapping("/todayDto")
-    public JjkCharacterDTO getTodaysCharacterDto(){
+    public TodayCharacterDto getTodaysCharacterDto(){
         return jjkCharacterDateService.getTodayCharacterDto();
     }
 
