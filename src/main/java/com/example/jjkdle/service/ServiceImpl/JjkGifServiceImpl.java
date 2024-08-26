@@ -1,6 +1,7 @@
 package com.example.jjkdle.service.ServiceImpl;
 
 import com.example.jjkdle.model.ColorResponse;
+import com.example.jjkdle.model.DTO.JjkGifDTO;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.repository.JjkGifRepository;
 import com.example.jjkdle.service.JjkCharacterService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class JjkGifServiceImpl implements JjkGifService {
@@ -27,6 +29,14 @@ public class JjkGifServiceImpl implements JjkGifService {
     @Override
     public List<JjkGif> findAll() {
         return gifRepository.findAll();
+    }
+
+    @Override
+    public List<JjkGifDTO> findAllDto() {
+        return gifRepository.findAll()
+                .stream()
+                .map(character -> new JjkGifDTO(character.getGifUrl(), character.getCharacterName(), character.getAbility()))
+                .collect(Collectors.toList());
     }
 
     @Override

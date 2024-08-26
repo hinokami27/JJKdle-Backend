@@ -1,6 +1,7 @@
 package com.example.jjkdle.service.ServiceImpl;
 
 import com.example.jjkdle.model.CompareResponse;
+import com.example.jjkdle.model.DTO.JjkCharacterDTO;
 import com.example.jjkdle.model.JjkCharacter;
 import com.example.jjkdle.repository.JjkCharacterRepository;
 import com.example.jjkdle.service.JjkCharacterDateService;
@@ -55,6 +56,14 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
     @Override
     public List<JjkCharacter> findAll() {
         return jjkCharacterRepository.findAll();
+    }
+
+    @Override
+    public List<JjkCharacterDTO> findAllDto() {
+        return jjkCharacterRepository.findAll()
+                .stream()
+                .map(character -> new JjkCharacterDTO(character.getName(),character.getImgUrl(),character.getGender(),character.getAffiliations(),character.getJujutsu(),character.getDomain(),character.getEnergy(),character.getGrade(),character.getFirstArc()))
+                .collect(Collectors.toList());
     }
 
     @Override
