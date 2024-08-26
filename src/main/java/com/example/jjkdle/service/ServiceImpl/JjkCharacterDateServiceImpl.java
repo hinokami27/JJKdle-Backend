@@ -1,5 +1,6 @@
 package com.example.jjkdle.service.ServiceImpl;
 
+import com.example.jjkdle.model.DTO.JjkCharacterDTO;
 import com.example.jjkdle.model.JjkCharacter;
 import com.example.jjkdle.model.JjkCharacterDate;
 import com.example.jjkdle.repository.JjkCharacterDateRepository;
@@ -42,6 +43,22 @@ public class JjkCharacterDateServiceImpl implements JjkCharacterDateService {
     @Override
     public JjkCharacter getTodayCharacter() {
         return jjkCharacterDateRepository.findJjkCharacterDateByDate(LocalDate.now()).getJjkCharacter();
+    }
+
+    @Override
+    public JjkCharacterDTO getTodayCharacterDto() {
+        JjkCharacter todayCharacter = jjkCharacterDateRepository.findJjkCharacterDateByDate(LocalDate.now()).getJjkCharacter();
+        return new JjkCharacterDTO(
+                todayCharacter.getName(),
+                todayCharacter.getImgUrl(),
+                todayCharacter.getGender(),
+                todayCharacter.getAffiliations(),
+                todayCharacter.getJujutsu(),
+                todayCharacter.getDomain(),
+                todayCharacter.getEnergy(),
+                todayCharacter.getGrade(),
+                todayCharacter.getFirstArc()
+        );
     }
 
     @Override

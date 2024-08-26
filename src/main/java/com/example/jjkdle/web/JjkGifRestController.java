@@ -1,6 +1,7 @@
 package com.example.jjkdle.web;
 
 import com.example.jjkdle.model.ColorResponse;
+import com.example.jjkdle.model.DTO.JjkGifDTO;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.model.JjkGifDate;
 import com.example.jjkdle.service.JjkGifDateService;
@@ -25,6 +26,12 @@ public class JjkGifRestController {
     public List<JjkGif> getAllGifs(){
         return gifService.findAll();
     }
+
+    @GetMapping("/allDto")
+    public List<JjkGifDTO> getAllGifsDto(){
+        return gifService.findAllDto();
+    }
+
     @GetMapping("/dates")
     public List<JjkGifDate> getAllGifDates(){
         return gifDateService.findAll();
@@ -38,6 +45,11 @@ public class JjkGifRestController {
     @GetMapping("/today")
     public JjkGif getTodaysGif(){
         return gifDateService.getTodayGif();
+    }
+
+    @GetMapping("/todayDto")
+    public JjkGifDTO getTodaysGifDto(){
+        return gifDateService.getTodayGifDto();
     }
 
     @GetMapping("/shuffle")

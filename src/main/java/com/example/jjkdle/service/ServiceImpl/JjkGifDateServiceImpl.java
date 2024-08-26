@@ -1,5 +1,6 @@
 package com.example.jjkdle.service.ServiceImpl;
 
+import com.example.jjkdle.model.DTO.JjkGifDTO;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.model.JjkGifDate;
 import com.example.jjkdle.repository.JjkGifDateRepository;
@@ -40,6 +41,16 @@ public class JjkGifDateServiceImpl implements JjkGifDateService {
     @Override
     public JjkGif getTodayGif() {
         return gifDateRepository.findJjkGifDateByDate(LocalDate.now()).getGif();
+    }
+
+    @Override
+    public JjkGifDTO getTodayGifDto() {
+        JjkGif todayGif = gifDateRepository.findJjkGifDateByDate(LocalDate.now()).getGif();
+        return new JjkGifDTO(
+                todayGif.getGifUrl(),
+                todayGif.getCharacterName(),
+                todayGif.getAbility()
+        );
     }
 
     @Override

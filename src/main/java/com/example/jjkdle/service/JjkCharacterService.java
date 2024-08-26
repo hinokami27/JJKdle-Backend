@@ -1,6 +1,7 @@
 package com.example.jjkdle.service;
 
 import com.example.jjkdle.model.CompareResponse;
+import com.example.jjkdle.model.DTO.JjkCharacterDTO;
 import com.example.jjkdle.model.JjkCharacter;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface JjkCharacterService {
     void resetImgLinks();
 
     CompareResponse compareWinner(String input);
+
+    List<JjkCharacterDTO> findAllDto();
 }

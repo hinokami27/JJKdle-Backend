@@ -1,6 +1,7 @@
 package com.example.jjkdle.web;
 
 import com.example.jjkdle.model.CompareResponse;
+import com.example.jjkdle.model.DTO.JjkCharacterDTO;
 import com.example.jjkdle.model.JjkCharacter;
 import com.example.jjkdle.model.JjkCharacterDate;
 import com.example.jjkdle.service.JjkCharacterDateService;
@@ -25,6 +26,12 @@ public class JjkCharacterRestController {
     public List<JjkCharacter> getAll(){
         return jjkCharacterService.findAll();
     }
+
+    @GetMapping("/allDto")
+    public List<JjkCharacterDTO> getAllDto(){
+        return jjkCharacterService.findAllDto();
+    }
+
     @GetMapping("/dates")
     public List<JjkCharacterDate> getDates(){
         return jjkCharacterDateService.findAll();
@@ -41,6 +48,12 @@ public class JjkCharacterRestController {
     public JjkCharacter getTodaysCharacter() {
         return jjkCharacterDateService.getTodayCharacter();
     }
+
+    @GetMapping("/todayDto")
+    public JjkCharacterDTO getTodaysCharacterDto(){
+        return jjkCharacterDateService.getTodayCharacterDto();
+    }
+
     @GetMapping("/compareWinner")
     public CompareResponse compareWinner(@RequestParam String name){
         return jjkCharacterService.compareWinner(name);
