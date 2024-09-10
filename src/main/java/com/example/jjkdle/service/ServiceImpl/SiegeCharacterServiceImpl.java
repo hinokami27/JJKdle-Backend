@@ -47,6 +47,7 @@ public class SiegeCharacterServiceImpl implements SiegeCharacterService {
             opName = opName.replace("Ã","A");
             opName = opName.replace("Ø","O");
             opName = opName.replace("Ä","A");
+            opName = opName.replace("Ó","O");
             op.setImgUrl("/images/operators/"+opName+".png");
             siegeCharacterRepository.save(op);
         }
