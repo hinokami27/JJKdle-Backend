@@ -21,6 +21,7 @@
   <thead>
     <tr>
       <th scope="col">Image</th>
+      <th scope="col">ImageUrl</th>
       <th scope="col">Character</th>
       <th scope="col">Gender</th>
       <th scope="col">Affiliation</th>
@@ -34,7 +35,10 @@
   </thead>
   <tbody>
     <tr th:each="jjkchar : ${characters}">
-      <td scope="row"><img th:src="${jjkchar.getImgUrl()}"></td>
+      <td>
+        <img th:src="@{${'https://jj-kdle-frontend.vercel.app/images/photos/'+jjkchar.getName()+'.jpg'}}">
+      </td>
+      <td scope="row"><div th:text="${jjkchar.getImgUrl()}"></div></td>
       <td th:text="${jjkchar.getName()}"></td>
       <td th:text="${jjkchar.getGender()}"></td>
       <td>
