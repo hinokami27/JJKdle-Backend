@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/siege")
-@CrossOrigin(origins = {"http://localhost:5173","https://jj-kdle-frontend.vercel.app","https://jj-kdle-frontend.vercel.app/"})
+@CrossOrigin(origins = {"http://localhost:5173","https://jj-kdle-frontend.vercel.app","https://jj-kdle-frontend.vercel.app/","https://www.jjkdle.com/","https://www.jjkdle.com/"})
 public class SiegeCharacterRestController {
 
     private final SiegeCharacterService siegeCharacterService;

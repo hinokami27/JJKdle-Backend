@@ -12,7 +12,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/gif")
-@CrossOrigin(origins = {"http://localhost:5173","https://jj-kdle-frontend.vercel.app","https://jj-kdle-frontend.vercel.app/"})
+@CrossOrigin(origins = {"http://localhost:5173","https://jj-kdle-frontend.vercel.app","https://jj-kdle-frontend.vercel.app/","https://www.jjkdle.com/","https://www.jjkdle.com/"})
 public class JjkGifRestController {
 
     private final JjkGifService gifService;
@@ -77,5 +77,4 @@ public class JjkGifRestController {
     public String getTodayCharImg(){
         return gifService.getTodayCharImg();
     }
-
 }
