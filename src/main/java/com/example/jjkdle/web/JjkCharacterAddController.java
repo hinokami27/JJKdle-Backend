@@ -1,6 +1,7 @@
 package com.example.jjkdle.web;
 
 import com.example.jjkdle.model.JjkCharacter;
+import com.example.jjkdle.service.ApiCounterService;
 import com.example.jjkdle.service.JjkCharacterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class JjkCharacterAddController {
 
     private final JjkCharacterService jjkCharacterService;
+    private final ApiCounterService apiCounterService;
 
-    public JjkCharacterAddController(JjkCharacterService jjkCharacterService) {
+    public JjkCharacterAddController(JjkCharacterService jjkCharacterService, ApiCounterService apiCounterService) {
         this.jjkCharacterService = jjkCharacterService;
+        this.apiCounterService = apiCounterService;
     }
 
     @GetMapping
@@ -79,5 +82,12 @@ public class JjkCharacterAddController {
         jjkCharacterService.editCharacter(id, name, imgUrl, gender, affiliations, jujutsu, domain, energy, grade, firstArc);
 
         return "redirect:/showAll";
+    }
+    @GetMapping("/analytics")
+    public String getAnalyticsPage(Model model){
+        model.addAttribute("todayCount",apiCounterService.getTodayApiCounter());
+        model.addAttribute("lifetimeCount",apiCounterService.getTotalApiCounter());
+        model.addAttribute("counters",apiCounterService.getAllApiCounter());
+        return "analytics";
     }
 }

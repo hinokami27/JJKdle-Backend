@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Title</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: "Jujutsu Kaisen",sans-serif;
+            color: white;
+        }
+        body{
+            padding: 20px;
+            background-color: #161039;
+        }
+        #todayWrap, #lifetimeWrap{
+            border-radius: 20px;
+            padding: 20px 30px;
+            width: 300px;
+            height: 200px;
+            background-color: #272953;
+        }
+        .countersWrap{
+            border-radius: 20px;
+            padding: 20px 30px;
+            width: 250px;
+            height: 130px;
+            background-color: #272953;
+            margin: 20px 0;
+            place-self: center;
+        }
+        .boxTitle, span{
+            font-size: 34px;
+        }
+        #smallWrap{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #todayCount,#lifetimeCount{
+            font-size: 68px;
+            margin-left: 100px;
+            letter-spacing: 10px;
+        }
+        .counterCount , .counterDay{
+            font-size: 28px;
+            display: inline-block;
+            width: fit-content;
+            height: fit-content;
+        }
+        #wrap{
+            width: 800px;
+            margin: 0 auto;
+        }
+        #allWrap{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="smallWrap">
+        <div id="todayWrap">
+            <div class="boxTitle" >Today Views : </div>
+            <div id="todayCount" th:text="${todayCount}">123</div>
+        </div>
+        <div id="lifetimeWrap">
+            <div class="boxTitle">Lifetime Views : </div>
+            <div id="lifetimeCount" th:text="${lifetimeCount}">123</div>
+        </div>
+    </div>
+    <div class="boxTitle" style="margin-top: 50px">Views by date : </div>
+    <div id="allWrap">
+        <div class="countersWrap" th:each="counter : ${counters}">
+            <span>Date : </span>
+            <div class="counterDay" th:text="${counter.getDate()}">2024-10-22</div>
+            <span>Views : </span>
+            <div class="counterCount" th:text="${counter.getCounter()}">2313</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,10 +1,12 @@
 package com.example.jjkdle.web;
 
+import com.example.jjkdle.model.ApiCounter;
 import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.DTO.JjkCharacterDTO;
 import com.example.jjkdle.model.DTO.TodayCharacterDto;
 import com.example.jjkdle.model.JjkCharacter;
 import com.example.jjkdle.model.JjkCharacterDate;
+import com.example.jjkdle.service.ApiCounterService;
 import com.example.jjkdle.service.JjkCharacterDateService;
 import com.example.jjkdle.service.JjkCharacterService;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +20,12 @@ public class JjkCharacterRestController {
 
     private final JjkCharacterService jjkCharacterService;
     private final JjkCharacterDateService jjkCharacterDateService;
+    private final ApiCounterService apiCounterService;
 
-    public JjkCharacterRestController(JjkCharacterService jjkCharacterService, JjkCharacterDateService jjkCharacterDateService) {
+    public JjkCharacterRestController(JjkCharacterService jjkCharacterService, JjkCharacterDateService jjkCharacterDateService, ApiCounterService apiCounterService) {
         this.jjkCharacterService = jjkCharacterService;
         this.jjkCharacterDateService = jjkCharacterDateService;
+        this.apiCounterService = apiCounterService;
     }
     @GetMapping("/all")
     public List<JjkCharacter> getAll(){
@@ -30,7 +34,12 @@ public class JjkCharacterRestController {
 
     @GetMapping("/allDto")
     public List<JjkCharacterDTO> getAllDto(){
+        apiCounterService.incrementApiCounter();
         return jjkCharacterService.findAllDto();
+    }
+    @GetMapping("/allCounters")
+    public List<ApiCounter> getAllCounters(){
+        return apiCounterService.getAllApiCounter();
     }
 
     @GetMapping("/dates")
