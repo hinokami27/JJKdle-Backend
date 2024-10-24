@@ -1,5 +1,6 @@
 package com.example.jjkdle.service;
 
+import com.example.jjkdle.model.DTO.TodayCharacterDto;
 import com.example.jjkdle.model.SiegeCharacter;
 import com.example.jjkdle.model.SiegeCharacterDate;
 
@@ -10,4 +11,5 @@ public interface SiegeCharacterDateService {
     void shuffleAndSetDates();
     SiegeCharacter getTodayCharacter();
     List<SiegeCharacterDate> findAll();
+    TodayCharacterDto getTodayCharacterDto();
 }

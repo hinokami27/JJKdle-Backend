@@ -1,5 +1,6 @@
 package com.example.jjkdle.service.ServiceImpl;
 
+import com.example.jjkdle.model.DTO.TodayCharacterDto;
 import com.example.jjkdle.model.SiegeCharacter;
 import com.example.jjkdle.model.SiegeCharacterDate;
 import com.example.jjkdle.repository.SiegeCharacterDateRepository;
@@ -45,5 +46,11 @@ public class SiegeCharacterDateServiceImpl implements SiegeCharacterDateService 
     @Override
     public List<SiegeCharacterDate> findAll() {
         return siegeCharacterDateRepository.findAll();
+    }
+
+    @Override
+    public TodayCharacterDto getTodayCharacterDto() {
+        SiegeCharacter today = siegeCharacterDateRepository.findSiegeCharacterDateByDate(LocalDate.now()).getSiegeCharacter();
+        return new TodayCharacterDto(today.getName(),today.getImgUrl());
     }
 }

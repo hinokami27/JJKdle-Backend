@@ -2,6 +2,7 @@ package com.example.jjkdle.service.ServiceImpl;
 
 
 import com.example.jjkdle.model.CompareResponse;
+import com.example.jjkdle.model.DTO.SiegeCharacterDto;
 import com.example.jjkdle.model.SiegeCharacter;
 import com.example.jjkdle.repository.SiegeCharacterRepository;
 import com.example.jjkdle.service.SiegeCharacterDateService;
@@ -51,6 +52,11 @@ public class SiegeCharacterServiceImpl implements SiegeCharacterService {
             op.setImgUrl("/images/operators/"+opName+".png");
             siegeCharacterRepository.save(op);
         }
+    }
+
+    @Override
+    public List<SiegeCharacterDto> findAllDto() {
+        return siegeCharacterRepository.findAll().stream().map(SiegeCharacterDto::new).collect(Collectors.toList());
     }
 
     @Override
