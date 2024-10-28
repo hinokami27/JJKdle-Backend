@@ -38,7 +38,7 @@ public class ApiCounterServiceImpl implements ApiCounterService {
 
     @Override
     public List<ApiCounter> getAllApiCounter() {
-        return apiCounterRepository.findAll();
+        return apiCounterRepository.findAllByOrderByDateDesc();
     }
 
     @Override
