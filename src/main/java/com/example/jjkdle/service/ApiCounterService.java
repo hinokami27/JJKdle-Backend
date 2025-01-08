@@ -9,4 +9,5 @@ public interface ApiCounterService {
     int getTodayApiCounter();
     List<ApiCounter> getAllApiCounter();
     int getTotalApiCounter();
+    void saveApiCounter(ApiCounter apiCounter);
 }

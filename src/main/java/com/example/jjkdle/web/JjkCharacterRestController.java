@@ -82,5 +82,11 @@ public class JjkCharacterRestController {
             jjkCharacterService.saveCharacter(jjk.getName(),jjk.getImgUrl(),jjk.getGender(),aff,jjt,dom,nrg,jjk.getGrade(),jjk.getFirstArc());
         }
     }
+    @PostMapping("/addAnalytics")
+    public void addApiCounters(@RequestBody List<ApiCounter> apiCounters) {
+        for(ApiCounter c : apiCounters){
+            apiCounterService.saveApiCounter(c);
+        }
+    }
 
 }

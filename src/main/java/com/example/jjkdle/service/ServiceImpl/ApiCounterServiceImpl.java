@@ -50,4 +50,9 @@ public class ApiCounterServiceImpl implements ApiCounterService {
         }
         return total;
     }
+
+    @Override
+    public void saveApiCounter(ApiCounter apiCounter) {
+        apiCounterRepository.save(apiCounter);
+    }
 }
