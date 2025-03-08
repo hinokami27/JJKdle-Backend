@@ -72,6 +72,7 @@ public class JjkGifRestController {
         for(JjkGif gif : gifs){
             gifService.save(gif.getGifUrl(),gif.getCharacterName(),gif.getAbility());
         }
+        gifDateService.shuffleAndSetDates();
     }
     @GetMapping("/todayImg")
     public String getTodayCharImg(){

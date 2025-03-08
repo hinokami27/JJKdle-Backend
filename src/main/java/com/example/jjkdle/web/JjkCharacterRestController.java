@@ -81,6 +81,7 @@ public class JjkCharacterRestController {
             String nrg = String.join(",",jjk.getEnergy());
             jjkCharacterService.saveCharacter(jjk.getName(),jjk.getImgUrl(),jjk.getGender(),aff,jjt,dom,nrg,jjk.getGrade(),jjk.getFirstArc());
         }
+        jjkCharacterDateService.shuffleAndSetDates();
     }
     @PostMapping("/addAnalytics")
     public void addApiCounters(@RequestBody List<ApiCounter> apiCounters) {

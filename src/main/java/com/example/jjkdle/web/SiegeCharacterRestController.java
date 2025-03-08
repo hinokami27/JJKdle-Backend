@@ -62,6 +62,7 @@ public class SiegeCharacterRestController {
             String sights = String.join(",",op.getSights());
             siegeCharacterService.saveCharacter(op.getImgUrl(),op.getName(),op.getGender(),op.getSide(),specs,op.getOrganisation(),op.getSquad(),sights,op.getReleaseYear());
         }
+        siegeCharacterService.resetImgLinks();
     }
 
 }
