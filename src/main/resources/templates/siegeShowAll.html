@@ -36,7 +36,7 @@
   <tbody>
   <tr th:each="operator : ${operators}">
     <td>
-      <img src="https://tiermaker.com/images/media/template_images/2024/17385606/all-current-r6-operators-17385606-2/glaz.png" th:src="@{${'https://tiermaker.com/images/media/template_images/2024/17659151/rainbow-six-siege-all-operators-y9s4-17659151/'+operator.getName().replace('Ã','A').replace('Ä','A').replace('Ø','O').replace('Ó','O').toLowerCase() +'.png'}}">
+      <img src="https://tiermaker.com/images/media/template_images/2024/17385606/all-current-r6-operators-17385606-2/glaz.png" th:src="@{${'https://r6dle-one.vercel.app/_next/image?url=%2Fimages%2Foperators%2F'+operator.getName().replace('Ã','A').replace('Ä','A').replace('Ø','O').replace('Ó','O').toUpperCase() +'.png&w=128&q=75'}}">
     </td>
     <td th:text="${operator.getImgUrl()}">/images/operators/GLAZ.png</td>
     <td th:text="${operator.getName()}">GLAZ</td>
