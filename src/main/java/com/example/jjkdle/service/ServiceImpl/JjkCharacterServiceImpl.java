@@ -142,7 +142,7 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
     }
 
     public String beforeOrAfter(String today, String guess){
-        List<String> gradeTiers = Arrays.asList("None","Grade 4","Grade 3","Grade 2","Semi-Grade 1","Grade 1","Special Grade 1","Special Grade");
+        List<String> gradeTiers = Arrays.asList("None","Grade 4","Grade 3","Semi-Grade 2","Grade 2","Semi-Grade 1","Grade 1","Special Grade 1","Special Grade");
         List<String> storyArcs = Arrays.asList("Cursed Child Arc","Fearsome Womb Arc","Vs. Mahito Arc",
                 "Kyoto Goodwill Event Arc","Death Painting Arc","Gojo's Past Arc","Shibuya Incident Arc",
                 "Itadori's Extermination Arc","Perfect Preparation Arc","Culling Game Arc");
