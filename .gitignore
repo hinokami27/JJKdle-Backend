@@ -32,3 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 src/main/resources/db.mv.db
+
+### manual ###
+jjkcharacters.json
+jjkgifs.json
+operators.json
