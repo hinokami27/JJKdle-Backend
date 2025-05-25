@@ -53,4 +53,9 @@ public class SiegeCharacterDateServiceImpl implements SiegeCharacterDateService 
         SiegeCharacter today = siegeCharacterDateRepository.findSiegeCharacterDateByDate(LocalDate.now()).getSiegeCharacter();
         return new TodayCharacterDto(today.getName(),today.getImgUrl());
     }
+
+    @Override
+    public void deleteAll() {
+        siegeCharacterDateRepository.deleteAll();
+    }
 }

@@ -57,4 +57,9 @@ public class JjkGifDateServiceImpl implements JjkGifDateService {
     public List<JjkGifDate> findAll() {
         return gifDateRepository.findAll();
     }
+
+    @Override
+    public void deleteAll() {
+        gifDateRepository.deleteAll();
+    }
 }

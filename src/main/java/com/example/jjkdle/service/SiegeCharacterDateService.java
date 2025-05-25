@@ -12,4 +12,5 @@ public interface SiegeCharacterDateService {
     SiegeCharacter getTodayCharacter();
     List<SiegeCharacterDate> findAll();
     TodayCharacterDto getTodayCharacterDto();
+    void deleteAll();
 }

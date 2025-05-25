@@ -14,4 +14,5 @@ public interface JjkCharacterDateService {
     TodayCharacterDto getTodayCharacterDto();
     List<JjkCharacterDate> findAll();
     String getCurrentTimeWithZone();
+    void deleteAll();
 }

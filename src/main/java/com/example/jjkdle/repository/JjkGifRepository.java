@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JjkGifRepository extends JpaRepository<JjkGif, Long> {
+    JjkGif findByCharacterNameAndAbility(String characterName, String ability);
 }

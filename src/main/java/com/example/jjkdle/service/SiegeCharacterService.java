@@ -22,6 +22,8 @@ public interface SiegeCharacterService {
     boolean compared(SiegeCharacter first, SiegeCharacter second);
 
     CompareResponse compareWinner(String input);
+    SiegeCharacter findSiegeCharacterByName(String name);
 
     void editCharacter(Long id, String imgUrl, String name, String gender, String side, String specialty, String organisation, String squad, String sights, String releaseYear);
+    void deleteAll();
 }

@@ -66,4 +66,9 @@ public class JjkCharacterDateServiceImpl implements JjkCharacterDateService {
         // Return the formatted string
         return zonedDateTime.format(formatter);
     }
+
+    @Override
+    public void deleteAll() {
+        jjkCharacterDateRepository.deleteAll();
+    }
 }

@@ -1,16 +1,12 @@
 package com.example.jjkdle.web;
 
-import com.example.jjkdle.model.ApiCounter;
-import com.example.jjkdle.model.CompareResponse;
+import com.example.jjkdle.model.*;
 import com.example.jjkdle.model.DTO.JjkCharacterDTO;
 import com.example.jjkdle.model.DTO.TodayCharacterDto;
-import com.example.jjkdle.model.JjkCharacter;
-import com.example.jjkdle.model.JjkCharacterDate;
-import com.example.jjkdle.service.ApiCounterService;
-import com.example.jjkdle.service.JjkCharacterDateService;
-import com.example.jjkdle.service.JjkCharacterService;
+import com.example.jjkdle.service.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,11 +16,15 @@ public class JjkCharacterRestController {
 
     private final JjkCharacterService jjkCharacterService;
     private final JjkCharacterDateService jjkCharacterDateService;
+    private final JjkGifService jjkGifService;
+    private final SiegeCharacterService siegeCharacterService;
     private final ApiCounterService apiCounterService;
 
-    public JjkCharacterRestController(JjkCharacterService jjkCharacterService, JjkCharacterDateService jjkCharacterDateService, ApiCounterService apiCounterService) {
+    public JjkCharacterRestController(JjkCharacterService jjkCharacterService, JjkCharacterDateService jjkCharacterDateService, JjkGifService jjkGifService, SiegeCharacterService siegeCharacterService, ApiCounterService apiCounterService) {
         this.jjkCharacterService = jjkCharacterService;
         this.jjkCharacterDateService = jjkCharacterDateService;
+        this.jjkGifService = jjkGifService;
+        this.siegeCharacterService = siegeCharacterService;
         this.apiCounterService = apiCounterService;
     }
     @GetMapping("/all")
@@ -89,5 +89,4 @@ public class JjkCharacterRestController {
             apiCounterService.saveApiCounter(c);
         }
     }
-
 }

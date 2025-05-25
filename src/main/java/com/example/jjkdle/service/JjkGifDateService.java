@@ -11,4 +11,5 @@ public interface JjkGifDateService {
     JjkGif getTodayGif();
     JjkGifDTO getTodayGifDto();
     List<JjkGifDate> findAll();
+    void deleteAll();
 }

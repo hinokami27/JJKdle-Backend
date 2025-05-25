@@ -18,4 +18,6 @@ public interface JjkGifService {
     ColorResponse compareGifs(String guessedCharacter, String guessedAbility);
     String getTodayCharImg();
     List<String> findAllAbilities();
+    void deleteAll();
+    JjkGif findByNameAndAbility(String name, String ability);
 }

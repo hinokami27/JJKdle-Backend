@@ -105,6 +105,11 @@ public class SiegeCharacterServiceImpl implements SiegeCharacterService {
     }
 
     @Override
+    public SiegeCharacter findSiegeCharacterByName(String name) {
+       return siegeCharacterRepository.findByName(name);
+    }
+
+    @Override
     public void editCharacter(Long id, String imgUrl, String name, String gender, String side, String specialty, String organisation, String squad, String sights, String releaseYear) {
         SiegeCharacter operator = siegeCharacterRepository.findById(id).get();
         operator.setImgUrl(imgUrl);
@@ -120,6 +125,12 @@ public class SiegeCharacterServiceImpl implements SiegeCharacterService {
         operator.setReleaseYear(releaseYear);
         siegeCharacterRepository.save(operator);
     }
+
+    @Override
+    public void deleteAll() {
+        siegeCharacterRepository.deleteAll();
+    }
+
     public String listCompare(List<String> today, List<String> guess){
         Set<String> todaySet = new HashSet<>(today);
         Set<String> guessSet = new HashSet<>(guess);

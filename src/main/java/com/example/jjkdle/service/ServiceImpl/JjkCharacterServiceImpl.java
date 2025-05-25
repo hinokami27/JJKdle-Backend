@@ -67,6 +67,11 @@ public class JjkCharacterServiceImpl implements JjkCharacterService {
     }
 
     @Override
+    public void deleteAll() {
+        jjkCharacterRepository.deleteAll();
+    }
+
+    @Override
     public Optional<JjkCharacter> findById(Long id) {
         return jjkCharacterRepository.findById(id);
     }

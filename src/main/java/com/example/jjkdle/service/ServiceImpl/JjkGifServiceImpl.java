@@ -118,4 +118,14 @@ public class JjkGifServiceImpl implements JjkGifService {
         }
         return abilities;
     }
+
+    @Override
+    public void deleteAll() {
+        gifRepository.deleteAll();
+    }
+
+    @Override
+    public JjkGif findByNameAndAbility(String name, String ability) {
+        return gifRepository.findByCharacterNameAndAbility(name, ability);
+    }
 }

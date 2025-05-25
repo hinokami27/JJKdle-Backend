@@ -23,4 +23,6 @@ public interface JjkCharacterService {
     CompareResponse compareWinner(String input);
 
     List<JjkCharacterDTO> findAllDto();
+
+    void deleteAll();
 }
