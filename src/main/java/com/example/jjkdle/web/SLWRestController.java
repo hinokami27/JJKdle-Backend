@@ -25,7 +25,7 @@ public class SLWRestController {
         return slwService.findAll();
     }
 
-    @PostMapping("guess")
+    @PostMapping("/guess")
     public List<String> guessWord(@RequestParam String word){
         return slwService.returnMatchingCharacters(word);
     }
