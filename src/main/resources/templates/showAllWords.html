@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{'/words/add-form'}">Add word</a>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">L1</th>
+        <th scope="col">L2</th>
+        <th scope="col">L3</th>
+        <th scope="col">L4</th>
+        <th scope="col">L5</th>
+        <th scope="col">L6</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="word: ${words}">
+        <td th:text="${word.getL1()}"></td>
+        <td th:text="${word.getL2()}"></td>
+        <td th:text="${word.getL3()}"></td>
+        <td th:text="${word.getL4()}"></td>
+        <td th:text="${word.getL5()}"></td>
+        <td th:text="${word.getL6()}"></td>
+        <td>
+            <a th:href="@{'/words/edit-form/{id}' (id=${word.getId()})}" class="btn">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

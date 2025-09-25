@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{'/words/edit'}">
+    <input type="hidden" name="id" th:value="(${slw} != null ? ${slw.getId()} : '')">
+    <input th:value="${slw.getWord()}" class="form-control" type="text" minlength="6" maxlength="6" name="word">
+    <button type="submit">Edit</button>
+</form>
+</body>
+</html>
