@@ -1,5 +1,6 @@
 package com.example.jjkdle.service.ServiceImpl;
 
+import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.SixLetterWord;
 import com.example.jjkdle.repository.SLWRepository;
 import com.example.jjkdle.service.SLWDateService;
@@ -32,10 +33,10 @@ public class SLWServiceImpl implements SLWService {
     }
 
     @Override
-    public List<String> returnMatchingCharacters(String word) {
-        //SixLetterWord todaySlw = new SixLetterWord('S', 'U', 'K', 'U', 'N', 'A');
+    public CompareResponse returnMatchingCharacters(String word) {
         SixLetterWord todaySlw = slwDateService.getTodaySlw();
         List<String> matchingLetters = new ArrayList<>();
+        CompareResponse cr = new CompareResponse();
         int i = 0;
         for (Character letter: todaySlw.getLetters()){
             if(letter.equals(word.charAt(i))){
@@ -49,7 +50,21 @@ public class SLWServiceImpl implements SLWService {
             }
             i++;
         }
-        return matchingLetters;
+        cr.setGuessed(true);
+        for(String box: matchingLetters){
+            if(!box.equals("greenBox")){
+                cr.setGuessed(false);
+            }
+        }
+
+        cr.setFirstSquare(matchingLetters.get(0));
+        cr.setSecondSquare(matchingLetters.get(1));
+        cr.setThirdSquare(matchingLetters.get(2));
+        cr.setFourthSquare(matchingLetters.get(3));
+        cr.setFifthSquare(matchingLetters.get(4));
+        cr.setSixthSquare(matchingLetters.get(5));
+        cr.setSeventhSquare("");
+        return cr;
     }
 
     @Override

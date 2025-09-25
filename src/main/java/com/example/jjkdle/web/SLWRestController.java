@@ -1,5 +1,6 @@
 package com.example.jjkdle.web;
 
+import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.SixLetterWord;
 import com.example.jjkdle.model.SixLetterWordDate;
 import com.example.jjkdle.service.SLWDateService;
@@ -26,7 +27,7 @@ public class SLWRestController {
     }
 
     @PostMapping("/guess")
-    public List<String> guessWord(@RequestParam String word){
+    public CompareResponse guessWord(@RequestParam String word){
         return slwService.returnMatchingCharacters(word);
     }
 

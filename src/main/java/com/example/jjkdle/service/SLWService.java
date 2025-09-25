@@ -1,12 +1,13 @@
 package com.example.jjkdle.service;
 
+import com.example.jjkdle.model.CompareResponse;
 import com.example.jjkdle.model.SixLetterWord;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface SLWService {
-    List<String> returnMatchingCharacters(String word);
+    CompareResponse returnMatchingCharacters(String word);
     List<SixLetterWord> findAll();
     Optional<SixLetterWord> findById(Long id);
     SixLetterWord createWord(String word);
