@@ -44,8 +44,11 @@ public class JjkCharacterAddController {
                           @RequestParam String domain,
                           @RequestParam String energy,
                           @RequestParam String grade,
-                          @RequestParam String firstArc) {
-        jjkCharacterService.saveCharacter(name, imgUrl, gender, affiliations, jujutsu, domain, energy, grade, firstArc);
+                          @RequestParam String firstArc,
+                          @RequestParam String password) {
+        if(password.equals("megaknight")){
+            jjkCharacterService.saveCharacter(name, imgUrl, gender, affiliations, jujutsu, domain, energy, grade, firstArc);
+        }
         return "redirect:/";
     }
 
