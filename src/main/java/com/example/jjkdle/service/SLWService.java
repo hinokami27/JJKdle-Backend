@@ -13,4 +13,5 @@ public interface SLWService {
     SixLetterWord createWord(String word);
     SixLetterWord editWord(Long id, String word);
     void deleteWord(Long id);
+    void deleteAllWords();
 }

@@ -101,4 +101,9 @@ public class SLWServiceImpl implements SLWService {
         SixLetterWord slw = slwRepository.findById(id).orElseThrow();
         slwRepository.delete(slw);
     }
+
+    @Override
+    public void deleteAllWords() {
+        slwRepository.deleteAll();
+    }
 }

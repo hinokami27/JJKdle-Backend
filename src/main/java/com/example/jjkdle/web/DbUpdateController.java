@@ -3,6 +3,7 @@ package com.example.jjkdle.web;
 import com.example.jjkdle.model.JjkCharacter;
 import com.example.jjkdle.model.JjkGif;
 import com.example.jjkdle.model.SiegeCharacter;
+import com.example.jjkdle.model.SixLetterWord;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
@@ -26,14 +27,18 @@ public class DbUpdateController {
     private final JjkGifDateService jjkGifDateService;
     private final SiegeCharacterService siegeCharacterService;
     private final SiegeCharacterDateService siegeCharacterDateService;
+    private final SLWService slwService;
+    private final SLWDateService slwDateService;
 
-    public DbUpdateController(JjkCharacterService jjkCharacterService, JjkCharacterDateService jjkCharacterDateService, JjkGifService jjkGifService, JjkGifDateService jjkGifDateService, SiegeCharacterService siegeCharacterService, SiegeCharacterDateService siegeCharacterDateService) {
+    public DbUpdateController(JjkCharacterService jjkCharacterService, JjkCharacterDateService jjkCharacterDateService, JjkGifService jjkGifService, JjkGifDateService jjkGifDateService, SiegeCharacterService siegeCharacterService, SiegeCharacterDateService siegeCharacterDateService, SLWService slwService, SLWDateService slwDateService) {
         this.jjkCharacterService = jjkCharacterService;
         this.jjkCharacterDateService = jjkCharacterDateService;
         this.jjkGifService = jjkGifService;
         this.jjkGifDateService = jjkGifDateService;
         this.siegeCharacterService = siegeCharacterService;
         this.siegeCharacterDateService = siegeCharacterDateService;
+        this.slwService = slwService;
+        this.slwDateService = slwDateService;
     }
     @GetMapping("/purge")
     public void purgeDb() {
@@ -49,20 +54,24 @@ public class DbUpdateController {
         List<JjkCharacter> jjkCharacters = jjkCharacterService.findAll();
         List<JjkGif> jjkgifs = jjkGifService.findAll();
         List<SiegeCharacter> operators = siegeCharacterService.findAll();
+        List<SixLetterWord> words = slwService.findAll();
 
         ObjectMapper mapper = new ObjectMapper();
 
         File jjkCharFile = new File("jjkcharacters.json");
         File jjkGifFile = new File("jjkgifs.json");
         File operatorsFile = new File("operators.json");
+        File wordsFile = new File("words.json");
 
         if (jjkCharFile.exists()) jjkCharFile.delete();
         if (jjkGifFile.exists()) jjkGifFile.delete();
         if (operatorsFile.exists()) operatorsFile.delete();
+        if (wordsFile.exists()) wordsFile.delete();
 
         mapper.writerWithDefaultPrettyPrinter().writeValue(jjkCharFile, jjkCharacters);
         mapper.writerWithDefaultPrettyPrinter().writeValue(jjkGifFile, jjkgifs);
         mapper.writerWithDefaultPrettyPrinter().writeValue(operatorsFile, operators);
+        mapper.writerWithDefaultPrettyPrinter().writeValue(wordsFile, words);
     }
     @GetMapping("/update")
     public void updateDb() throws IOException {
@@ -70,10 +79,12 @@ public class DbUpdateController {
         File jjk = new File("jjkcharacters.json");
         File gif = new File("jjkgifs.json");
         File ops = new File("operators.json");
+        File wds = new File("words.json");
 
         List<JjkCharacter> characters = mapper.readValue(jjk, new TypeReference<List<JjkCharacter>>() {});
         List<JjkGif> gifs = mapper.readValue(gif, new TypeReference<List<JjkGif>>() {});
         List<SiegeCharacter> operators = mapper.readValue(ops, new TypeReference<List<SiegeCharacter>>() {});
+        List<SixLetterWord> words = mapper.readValue(wds, new TypeReference<List<SixLetterWord>>() {});
 
         for(JjkCharacter jjkchar : characters){
             if (jjkCharacterService.findByName(jjkchar.getName()) == null) {
@@ -102,8 +113,12 @@ public class DbUpdateController {
                         specs, op.getOrganisation(), op.getSquad(), sights, op.getReleaseYear()
                 );
             }}
+        for (SixLetterWord word : words){
+            slwService.createWord(word.getWord());
+        }
         jjkCharacterDateService.shuffleAndSetDates();
         jjkGifDateService.shuffleAndSetDates();
         siegeCharacterDateService.shuffleAndSetDates();
+        slwDateService.shuffleAndSetDates();
     }
 }
