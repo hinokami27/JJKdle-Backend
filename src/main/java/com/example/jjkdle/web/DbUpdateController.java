@@ -48,6 +48,8 @@ public class DbUpdateController {
         jjkGifService.deleteAll();
         siegeCharacterDateService.deleteAll();
         siegeCharacterService.deleteAll();
+        slwService.deleteAllWords();
+        slwDateService.deleteAll();
     }
     @GetMapping("/fetch")
     public void writeDbJson() throws IOException {
