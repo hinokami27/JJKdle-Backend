@@ -34,7 +34,7 @@ public class JjkCharacterRestController {
 
     @GetMapping("/allDto")
     public List<JjkCharacterDTO> getAllDto(){
-        apiCounterService.incrementApiCounter();
+//        apiCounterService.incrementApiCounter();
         return jjkCharacterService.findAllDto();
     }
     @GetMapping("/allCounters")
