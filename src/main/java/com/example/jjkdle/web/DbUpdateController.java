@@ -48,8 +48,8 @@ public class DbUpdateController {
         jjkGifService.deleteAll();
         siegeCharacterDateService.deleteAll();
         siegeCharacterService.deleteAll();
-        slwService.deleteAllWords();
         slwDateService.deleteAll();
+        slwService.deleteAllWords();
     }
     @GetMapping("/fetch")
     public void writeDbJson() throws IOException {
@@ -96,13 +96,13 @@ public class DbUpdateController {
                 String nrg = String.join(",", jjkchar.getEnergy());
 
                 jjkCharacterService.saveCharacter(
-                        jjkchar.getName(), jjkchar.getImgUrl(), jjkchar.getGender(),
+                        jjkchar.getName(), jjkchar.getImgUrl().replace(" ",""), jjkchar.getGender(),
                         aff, jjt, dom, nrg, jjkchar.getGrade(), jjkchar.getFirstArc()
                 );
             }}
         for(JjkGif jjkGif : gifs){
             if(jjkGifService.findByNameAndAbility(jjkGif.getCharacterName(), jjkGif.getAbility()) == null) {
-                jjkGifService.save(jjkGif.getGifUrl(), jjkGif.getCharacterName(), jjkGif.getAbility());
+                jjkGifService.save(jjkGif.getGifUrl().replace(" ",""), jjkGif.getCharacterName(), jjkGif.getAbility());
             }
         }
         for(SiegeCharacter op : operators){
@@ -111,7 +111,7 @@ public class DbUpdateController {
                 String sights = String.join(",", op.getSights());
 
                 siegeCharacterService.saveCharacter(
-                        op.getImgUrl(), op.getName(), op.getGender(), op.getSide(),
+                        op.getImgUrl().replace(" ",""), op.getName(), op.getGender(), op.getSide(),
                         specs, op.getOrganisation(), op.getSquad(), sights, op.getReleaseYear()
                 );
             }}
